@@ -1,9 +1,9 @@
-from services import * 
-# Importa todas las funciones y variables del modulo services
-
 if __name__ == "__main__":
     print("")
-    print("=" * 50)
-    print("   WELCOME TO THE SYSTEM")
-    print("=" * 50)
-# Esto hace que todo se ejecute en app.py (es el archivo principal)
+    print("=" * 30)
+    print("|   WELCOME TO THE SYSTEM   |")
+    print("=" * 30)
+    # This ensures everything runs from app.py (it is the main file)
+
+from services import *
+# Imports all functions and variables from the services module
