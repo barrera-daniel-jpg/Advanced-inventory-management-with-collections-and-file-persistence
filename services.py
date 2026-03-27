@@ -1,6 +1,6 @@
 from almacen import add_product
 
-bodega = []
+bodega = [{"Name": "Pan", "Stock": 5, "Unit_price": 300}, {"Name": "Cafe", "Stock": 5, "Unit_price": 500}]
 
 def menu():
     print("="*30)
@@ -40,15 +40,70 @@ def options():
         buscar = input("Ingrese nombre del producto que desea buscar: ").capitalize().strip()
         for pdt in bodega:
             if pdt["Name"] == buscar:
+                encontrado = True
                 print("| Nombre:", pdt["Name"], "| Cantidad:", pdt["Stock"], "| Precio Unitario: $", pdt["Unit_price"], "|")
+                break
             else:
                 print("El producto no se encuentra en el inventario")
                 return options()
-
     elif option == 4:
-        print("Que desea actualizar?: ")
-        print("1.Nombre")
-        print("2.Stock")
-        print("3.Precio Unitario")
+        buscar = input("Ingrese el nombre del producto a actualizar: ").capitalize().strip()
+
+        encontrado = False
+
+        for pdt in bodega:
+         if pdt["Name"] == buscar:
+            encontrado = True
+
+            print("¿Qué desea actualizar?")
+            print("1. Nombre")
+            print("2. Stock")
+            print("3. Precio Unitario")
+
+            opcion_update = int(input("Seleccione una opción: "))
+
+            if opcion_update == 1:
+                nuevo_nombre = input("Nuevo nombre: ").capitalize().strip()
+                pdt["Name"] = nuevo_nombre
+
+            elif opcion_update == 2:
+                nuevo_stock = int(input("Nuevo stock: "))
+                pdt["Stock"] = nuevo_stock
+
+            elif opcion_update == 3:
+                nuevo_precio = float(input("Nuevo precio: "))
+                pdt["Unit_price"] = nuevo_precio
+
+            print(" Producto actualizado correctamente")
+            break
+
+        if not encontrado:
+            print("Producto no encontrado")
+            return options()
+        
+    elif option == 5:
+        buscar = input("Producto a eliminar: ").capitalize().strip()
+
+        encontrado = False
+
+        for pdt in bodega:
+            if pdt["Name"] == buscar:
+                bodega.remove(pdt)
+                print("Producto eliminado")
+                encontrado = True
+                break 
+
+        if not encontrado:
+            print("Producto no encontrado")
+    elif option == 6:
+        option_6()
+        print (suma_total_stock)
+        
+
+def option_6 ():
+    suma_total_stock = sum(d["Stock"] for d in bodega)
+    return suma_total_stock
+    
+    
 
 loop()

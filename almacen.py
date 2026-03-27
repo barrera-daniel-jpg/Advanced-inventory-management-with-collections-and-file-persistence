@@ -1,3 +1,4 @@
+from collections import Counter
 
 def add_product():
     
@@ -36,4 +37,9 @@ def add_product():
     product_and_more = {"Name": name, "Stock": stock, "Unit_price": unit_price}
     print(f"El producto registrado satisfactoriamente")
     return product_and_more
-    
+
+def calcular_estadisticas ():
+    contador = Counter(bodega)
+    unidades_totales = contador
+    print(unidades_totales)
+    return unidades_totales
